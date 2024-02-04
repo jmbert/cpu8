@@ -1,0 +1,49 @@
+Instruction Format:
+        [0]:            Takes Immediate
+        If Takes Immediate:
+                [1]:    Is High Byte
+                [2-3]:  Opcode
+                [4-7]:  Destination Register
+                [8-15]: Immediate
+        Else:
+                [1-7]:          Opcode
+                [8-11]:         Destination Register
+                [12-15]:        Source Register
+
+
+Decoded: 224 bits + 4 bits
+        [0-3]: N Operations
+        (16 Operations (grouped in pairs))
+
+Operation: 14 bits
+        [0-3]: Type
+        (Operation Data)
+
+Operations Types:
+        0b0000 - EOI
+        0b0001 - Data Read 
+        0b0010 - Data Write 
+        0b0011 - Address Write 
+        0b0100 - Memory Write 
+	0b0101 - ALU Operation
+
+Data Read Format:
+        [0-7]: Read Destination
+        [8-9]: Reserved
+
+Data Write Format:
+         [0-7]:  Write Source
+         [8-9]:  Reserved
+
+Address Write Format:
+         [0-7]:  Write Source
+         [8-9]:  Reserved
+
+Memory Write:
+        [0-1]:  Write Size
+        [2-9]:  Address Source
+
+ALU Operation:
+        [0-7]:  Destination Register
+        [8-9]:  ALU Operation     
+        /* DEST = DATA Op A */

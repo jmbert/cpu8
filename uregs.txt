@@ -1,0 +1,30 @@
+00000000-00001111:      General Registers (User Addressable)
+00010000-00011111:      Temporary Registers (For use inside instructions)
+00100000-00111111:      Instruction-Specific Registers (Special Meaning)
+01000000-01111111:      Non-File Registers
+10000000-11111111:      Constant Registers
+
+General Regs:
+        0000-0111:      X0-X7
+        1000:           A
+        1001:           SP
+        1010:           BP
+        1011-1111:      Unused
+
+Temporary Registers:
+        0000-1111:      TMP0-TMP15
+
+IS Regs:
+        0000:           R_OP_1
+        0001:           R_OP_2
+        0010-0111:      Unused
+        1001:           IM_OP_1
+        1010-1111:      Unused
+
+NonFile Registers:
+        0000:           PC
+        0001-1111:      Unused
+
+Constant Registers:        
+        0000-1111:      CONST0-CONST15
+        /* CONSTN = 2^(N-1), CONST0 = 0 */

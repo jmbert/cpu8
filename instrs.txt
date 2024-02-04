@@ -1,0 +1,69 @@
+LDL IM_OP_1, X1:
+        N_OPS: 2
+        DB_WRITE:
+                [0-7]:  IM_OP_1
+                [8-9]:  0
+        DB_READ:
+                [0-7]:  R_OP_1
+                [8-9]:  0
+
+LDL (R_OP_1), R_OP_2:
+        N_OPS: 2
+        AB_WRITE:
+                [0-7]:  R_OP_1
+                [8-9]:  0
+        DB_READ:
+                [0-7]:  R_OP_2
+                [8-9]:  Reserved
+
+STR R_OP_1, (R_OP_2):
+        N_OPS: 2
+        DB_WRITE:
+                [0-7]:  R_OP_1
+                [8-9]:  0
+        MEM_WR:
+                [0-1]:  1
+                [2-9]:  R_OP_2
+
+TRN R_OP_1, R_OP_2:
+        N_OPS: 2
+        DB_WRITE:
+                [0-7]:  R_OP_1
+                [8-9]:  0
+        DB_READ:
+                [0-7]:  R_OP_2
+                [8-9]:  0
+
+PUSH R_OP_1:
+        N_OPS:  10 
+        DB_WRITE:
+                [0-7]:  R_OP_1
+                [9]:    0
+        MEM_WR:
+                [0-1]:  1
+                [2-9]:  SP
+        DB_WRITE:
+                [0]:    0
+                [1-8]:  A
+                [9]:    0
+        DB_READ:
+                [0-7]:  TMP1
+                [8-9]:  0
+        DB_WRITE:
+                [0-7]:  SP
+                [8-9]:  0
+        DB_READ:
+                [0-7]:  A
+                [9]:    0
+        DB_WRITE:
+                [0-7]:  CONST2 /* = 2 */
+                [8-9]:  0
+        ALU Operation:
+                [0-7]:  SP
+                [8-9]:  SUB
+        DB_WRITE:
+                [0-7]:  TMP1
+                [8-9]:  0
+        DB_READ:        
+                [0-7]:  A
+                [8-9]:  0
